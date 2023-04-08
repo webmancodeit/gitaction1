@@ -26,8 +26,8 @@ jobs:
           npm i
           npm run build --prod
       - name: Push Build to Releases
-        uses: actions/release-action@v1
+        uses: ncipollo/release-action@v1
         with:
-          artifacts: "dist/*"
-          token: ${{ secrets.TOKEN }}
+          artifacts: "dist"
+          token: ${{ secrets.TOKEN }}*/
       
