@@ -25,10 +25,9 @@ jobs:
         run: |
           npm i
           npm run build --prod
-      - name: Archive build
-        if: success()
-        uses: actions/upload-artifact@v1
+      - name: Push Build to Releases
+        uses: actions/release-action@v1
         with:
-          name: deploy_dist
-          path: dist
+          artifacts: "dist/*"
+          token: ${{ secrets.TOKEN }}*/
       
