@@ -26,9 +26,9 @@ jobs:
           npm i
           npm run build --prod
       - name: Push Build to Releases
-        uses: ActionwareIO/branch-push-action@action
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: action
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./dist/my-app/
           
       
