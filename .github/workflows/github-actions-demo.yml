@@ -24,7 +24,7 @@ jobs:
       - name: npm install
         run:  npm i
       - name: ng install
-        run:  npm install -g @angular/cli
+        run:  npm install -g @angular/cli@14.2.11
       - name: Build
         run:  npm run build --prod
       - name: ng Build
