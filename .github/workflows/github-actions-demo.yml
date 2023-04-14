@@ -23,12 +23,17 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install
         run:  npm i
+      - name: ng install
+        run:  npm install -g @angular/cli
       - name: Build
         run:  npm run build --prod
+      - name: ng Build
+        run:  ng build --prod
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./dist/my-app/
           publish_branch: gh-pages
           force_orphan: true
           
