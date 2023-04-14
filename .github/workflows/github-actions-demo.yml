@@ -27,7 +27,7 @@ jobs:
         run:  npm install -g @angular/cli@14.2.11
       - name: Build
         run:  npm run build --prod
-      - name: ng Build
+      - name: ng Build.
         run:  ng build
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
