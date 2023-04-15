@@ -43,6 +43,7 @@ jobs:
       - name: Commit and Push
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          github_token: ${{ secrets.TOKEN }}
           commit_message: 'Build and move files to new folder'
           file_pattern: 'new_folder/**'
           branch: 'gh-pages'
