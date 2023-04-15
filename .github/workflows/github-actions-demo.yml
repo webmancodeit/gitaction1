@@ -26,7 +26,7 @@ jobs:
       - name: ng install
         run:  npm install -g @angular/cli@14.2.11
       - name: ng Build.
-        run:  ng build --base-href https://webmancodeit.github.io/gitaction1/ --deploy-url https://webmancodeit.github.io/gitaction1/v1/
+        run:  ng build --base-href https://webmancodeit.github.io/gitaction1/ --deploy-url https://webmancodeit.github.io/gitaction1/new_folder/
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -34,13 +34,17 @@ jobs:
           publish_dir: ./dist/gitaction1/
           publish_branch: gh-pages
           force_orphan: true
+      - name: Move Files
+        run: |
+          mkdir new_folder
+          mv file1.txt file2.txt new_folder/
       - name: Commit and Push
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'Move files to new folder'
+          commit_message: 'Build and move files to new folder'
           commit_options: '--author="GitHub Action <action@github.com>"'
-          file_pattern: 'v1/**'
-          branch: 'gh-pages'
+          file_pattern: 'new_folder/**'
+          branch: 'new_branch'
       
           
       
