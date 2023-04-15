@@ -25,13 +25,22 @@ jobs:
         run:  npm i
       - name: ng install
         run:  npm install -g @angular/cli@14.2.11
+      - name: Build
+        run:  npm run build --prod
       - name: ng Build.
-        run:  ng build --base-href https://webmancodeit.github.io/gitaction1/ --deploy-url https://webmancodeit.github.io/gitaction1/
+        run:  ng build
+      - name: Create and push build to branch
+        uses: ad-m/github-push-action@master
+        with:
+          branch: master # Replace with the name of your branch
+          github_token: ${{ secrets.TOKEN }}
+          force: true # Use with caution
+          directory: ./dist/gitaction1 # Replace with your app name
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.TOKEN }}
-          
+          publish_dir: ./dist/gitaction1/
           publish_branch: gh-pages
           force_orphan: true
       
