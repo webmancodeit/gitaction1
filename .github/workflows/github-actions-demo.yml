@@ -46,7 +46,7 @@ jobs:
           commit_message: 'Build and move files to new folder'
           commit_options: '--author="GitHub Action <action@github.com>"'
           file_pattern: 'new_folder/**'
-          branch: 'new_branch'
+          branch: 'gh-pages'
       
           
       
