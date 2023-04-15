@@ -37,6 +37,8 @@ jobs:
       - name: Move Files
         run: |
           mkdir new_folder
+          touch file1.txt
+          touch file2.txt
           mv file1.txt file2.txt new_folder/
       - name: Commit and Push
         uses: stefanzweifel/git-auto-commit-action@v4
