@@ -34,6 +34,10 @@ jobs:
           publish_dir: ./dist/gitaction1/
           publish_branch: gh-pages
           force_orphan: true
+      - name: Move Build Output
+        run: |
+          mkdir -p v1
+          cp -R dist/* v1/
       
           
       
