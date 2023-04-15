@@ -31,7 +31,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./dist/gitaction1/
+          
           publish_branch: gh-pages
           force_orphan: true
       
