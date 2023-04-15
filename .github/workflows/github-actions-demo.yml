@@ -29,6 +29,13 @@ jobs:
         run:  npm run build --prod
       - name: ng Build.
         run:  ng build
+      - name: Create and push build to branch
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages # Replace with the name of your branch
+          github_token: ${{ secrets.TOKEN }}
+          force: true # Use with caution
+          directory: ./dist/my-app # Replace with your app name
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -36,5 +43,6 @@ jobs:
           publish_dir: ./dist/my-app/
           publish_branch: gh-pages
           force_orphan: true
+      
           
       
