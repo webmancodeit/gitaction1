@@ -34,10 +34,13 @@ jobs:
           publish_dir: ./dist/gitaction1/
           publish_branch: gh-pages
           force_orphan: true
-      - name: Move Build Output
-        run: |
-          mkdir -p v1
-          cp -R dist/* v1/
+      - name: Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Move files to new folder'
+          commit_options: '--author="GitHub Action <action@github.com>"'
+          file_pattern: 'v1/**'
+          branch: 'gh-pages'
       
           
       
