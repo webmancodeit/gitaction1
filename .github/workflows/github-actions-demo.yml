@@ -44,7 +44,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Build and move files to new folder'
-          commit_options: '--author="webmancodeit <webmancodeit@users.noreply.github.com>"'
           file_pattern: 'new_folder/**'
           branch: 'gh-pages'
       
