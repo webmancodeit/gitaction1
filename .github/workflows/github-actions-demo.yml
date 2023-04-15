@@ -35,12 +35,12 @@ jobs:
           branch: master # Replace with the name of your branch
           github_token: ${{ secrets.TOKEN }}
           force: true # Use with caution
-          directory: ./dist/my-app # Replace with your app name
+          directory: ./dist/gitaction1 # Replace with your app name
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./dist/my-app/
+          publish_dir: ./dist/gitaction1/
           publish_branch: gh-pages
           force_orphan: true
       
