@@ -30,7 +30,7 @@ jobs:
       - name: ng Build.
         run:  ng build
       - name: Create and push build to branch
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@staging
         with:
           branch: gh-pages # Replace with the name of your branch
           github_token: ${{ secrets.TOKEN }}
