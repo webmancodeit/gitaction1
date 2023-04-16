@@ -1,4 +1,8 @@
-on: push
+
+on:
+  push:
+    branches:
+      - master
 name: Build Angular 
 jobs:
   build:
@@ -34,6 +38,25 @@ jobs:
           publish_dir: ./dist/gitaction1/
           publish_branch: gh-pages
           force_orphan: true
+  copy-and-zip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: master # replace with the name of the branch you want to copy and zip files from
+      - name: Copy files
+        run: |
+          mkdir copied_files
+          cp -r ./dist/gitaction1/* copied_files/
+      - name: Zip files
+        run: |
+          zip -r copied_files.zip copied_files/*
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: copied-files
+          path: copied_files.zip
       
       
           
