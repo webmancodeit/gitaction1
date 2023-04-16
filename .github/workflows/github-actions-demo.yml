@@ -44,11 +44,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: master # replace with the name of the branch you want to copy and zip files from
+          ref: gh-pages # replace with the name of the branch you want to copy and zip  files from
       - name: Copy files
         run: |
           mkdir copied_files
-          cp -r ./dist/gitaction1/* copied_files/
+          cp -r ./* copied_files/
       - name: Zip files
         run: |
           zip -r copied_files.zip copied_files/*
@@ -57,6 +57,21 @@ jobs:
         with:
           name: copied-files
           path: copied_files.zip
+      - name: Download zip file
+        uses: actions/download-artifact@v2
+        with:
+          name: copied_files # replace with the name of your zip file artifact
+      - name: Set Content-Disposition header
+        run: |
+          echo "::set-output name=headers::Content-Disposition: attachment; filename=copied_files.zip"
+      - name: Upload headers as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: headers
+          path: ./copied_files.zip
+      - name: Download zip file with headers
+        run: |
+          curl -L -o copied_files.zip --header "$(cat copied_files.zip)"
       
       
           
