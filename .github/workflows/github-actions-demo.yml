@@ -36,7 +36,7 @@ jobs:
           git config --global user.name 'webman'
           git config --global user.email '<webmancode@gmail.com>'
           git add .
-          git commit -m "Deploy build files"
+          git commit -m "Deploy build files "
           git push origin HEAD:${{ github.ref }}
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
