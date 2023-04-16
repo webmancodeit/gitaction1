@@ -31,13 +31,7 @@ jobs:
         run:  npm install -g @angular/cli@14.2.11
       - name: ng Build.
         run:  ng build --base-href https://webmancodeit.github.io/gitaction1/ --deploy-url https://webmancodeit.github.io/gitaction1/
-      - name: Commit built files
-        run: |
-          git config --global user.name 'webman'
-          git config --global user.email '<webmancode@gmail.com>'
-          git add .
-          git commit -m "Deploy build files "
-          git push origin HEAD:${{ github.ref }}
+      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
