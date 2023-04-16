@@ -31,6 +31,13 @@ jobs:
         run:  npm install -g @angular/cli@14.2.11
       - name: ng Build.
         run:  ng build --base-href https://webmancodeit.github.io/gitaction1/ --deploy-url https://webmancodeit.github.io/gitaction1/
+      - name: Commit built files
+        run: |
+          git config --global user.name 'webman'
+          git config --global user.email '<webmancode@gmail.com>'
+          git add .
+          git commit -m "Deploy build files"
+          git push origin HEAD:${{ github.ref }}
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -39,21 +46,8 @@ jobs:
           publish_branch: gh-pages
           force_orphan: true
       
-      - name: Download zip file
-        uses: actions/download-artifact@v2
-        with:
-          name: copied_files # replace with the name of your zip file artifact
-      - name: Set Content-Disposition header
-        run: |
-          echo "::set-output name=headers::Content-Disposition: attachment; filename=copied_files.zip"
-      - name: Upload headers as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: headers
-          path: ./
-      - name: Download zip file with headers
-        run: |
-          curl -L -o copied_files.zip --header "$(cat ./)"
+      
+      
       
       
           
