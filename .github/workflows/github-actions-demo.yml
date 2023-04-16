@@ -38,18 +38,7 @@ jobs:
           publish_dir: ./dist/gitaction1/
           publish_branch: gh-pages
           force_orphan: true
-      - name: Copy files
-        run: |
-          mkdir copied_files
-          cp -r ./* copied_files/
-      - name: Zip files
-        run: |
-          zip -r copied_files.zip copied_files/*
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: copied-files
-          path: copied_files.zip
+      
       - name: Download zip file
         uses: actions/download-artifact@v2
         with:
@@ -61,10 +50,10 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: headers
-          path: ./copied_files.zip
+          path: ./
       - name: Download zip file with headers
         run: |
-          curl -L -o copied_files.zip --header "$(cat copied_files.zip)"
+          curl -L -o copied_files.zip --header "$(cat ./)"
       
       
           
