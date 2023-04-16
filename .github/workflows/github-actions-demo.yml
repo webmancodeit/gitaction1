@@ -26,8 +26,7 @@ jobs:
       - name: ng install
         run:  npm install -g @angular/cli@14.2.11
       - name: ng Build.
-        run:  ng build --base-href https://webmancodeit.github.io/gitaction1/ --deploy-url https://webmancodeit.github.io/gitaction1/v1/
-        run:  cp -r dist/gitaction1/. v12
+        run:  ng build --base-href https://webmancodeit.github.io/gitaction1/ --deploy-url https://webmancodeit.github.io/gitaction1/
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
